@@ -2,7 +2,7 @@
   <require from="./square.html"></require>
   <div>
     <div class="status">${status}</div>
-      <div class="board-row" repeat.for="row of squares">
+      <div class="board-row" repeat.for="row of current.squares">
         <square value.bind="square" repeat.for="square of row" click.delegate="handleClick($parent.$index, $index)"></square>
       </div>
   </div>
