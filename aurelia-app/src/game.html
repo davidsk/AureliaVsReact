@@ -5,8 +5,12 @@
       <board />
     </div>
     <div class="game-info">
-      <div><!-- status --></div>
-      <ol><!-- TODO --></ol>
+      <div>${status}</div>
+      <ol>
+        <li repeat.for="move of history">
+          <button click.delegate="jumpTo($index)">${ $index ? 'Go to move #' + $index : 'Go to game start'}</button>
+        </li>
+      </ol>
     </div>
   </div>
   

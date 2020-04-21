@@ -4,7 +4,7 @@ export class Game
   private xIsNext: Boolean = true;
   private winner: String | null;
   private history;
-  
+
   @computedFrom('xIsNext', 'winner')
   get status(): string {
     return this.winner ? `Winner: ${this.winner}` : `Next player: ${ this.xIsNext ? "X" : "O" }`;
@@ -13,7 +13,7 @@ export class Game
   get current(){
     return this.history[this.history.length - 1];
   }
-
+  
   constructor(){
     this.history = [
       {
@@ -23,7 +23,7 @@ export class Game
           [null, null, null]
         ]
       }
-    ]
+    ];
   }
 
   handleClick(rowIndex: number, columnIndex: number){
@@ -39,7 +39,8 @@ export class Game
     row[0].splice(columnIndex, 1, this.xIsNext ? "X" : "O");
     squares.splice(rowIndex, 1, row[0]);
     
-    this.history.concat(squares);
+    this.history.push({squares: squares});
+    
     this.xIsNext = !this.xIsNext;
 
     this.calculateWinner(squares);
