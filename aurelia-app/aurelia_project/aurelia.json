@@ -21,6 +21,7 @@
   },
   "markupProcessor": {
     "source": [
+      "index.html",
       "src/**/*.html"
     ]
   },

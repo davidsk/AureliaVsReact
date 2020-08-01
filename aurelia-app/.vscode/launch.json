@@ -2,30 +2,21 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Chrome Debugger",
-      "type": "chrome",
+      "type": "node",
       "request": "launch",
-      "url": "http://localhost:9000",
-      "webRoot": "${workspaceRoot}/src",
-      "userDataDir": "${workspaceRoot}/.chrome",
-      "sourceMapPathOverrides": {
-        "../src/*": "${webRoot}/*"
-      }
-    },
-    {
-      "type": "chrome",
-      "request": "attach",
-      "name": "Attach Karma Chrome",
-      "address": "localhost",
-      "port": 9333,
-      "sourceMaps": true,
-      "pathMapping": {
-        "/": "${workspaceRoot}",
-        "/base/": "${workspaceRoot}/"
+      "name": "Aurelia CLI",
+      "program": "${workspaceFolder}/node_modules/aurelia-cli/bin/aurelia-cli.js",
+      "console": "integratedTerminal",
+      "args": [
+        "run"
+      ],
+      "serverReadyAction":{
+        "action": "debugWithChrome",
+        "pattern": "Application Available At: http://localhost:([0-9]+)",
       },
-      "sourceMapPathOverrides": {
-        "../src/*": "${webRoot}/*"
-      }
+      "skipFiles": [
+        "<node_internals>/**"
+      ]
     }
   ]
 }
